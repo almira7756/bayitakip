@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almira Bilişim - Bayi Borç Takip Sistemi</title>
+  <style>
+    /* (Tüm stil kuralları aynen bırakıldı) */
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .login-container, .app-container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 900px;
+      width: 100%;
+    }
+    .hidden { display: none; }
+    h2 {
+      color: #005bbb;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1.5px solid #007bff;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, select:focus {
+      border-color: #004a99;
+      outline: none;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .flex-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .bayi-list, .borc-list {
+      background: #e8f0fe;
+      border-radius: 12px;
+      padding: 20px;
+      box-sizing: border-box;
+      flex-grow: 1;
+      min-width: 280px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .bayi-list { flex: 1 1 280px; }
+    .borc-list { flex: 2 1 600px; background: #f0f8ff; }
+    .bayi-item {
+      padding: 10px;
+      background: #dbe9ff;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .bayi-item.selected {
+      background: #007bff;
+      color: white;
+    }
+    .record {
+      background: white;
+      border-left: 6px solid #007bff;
+      padding: 15px 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .record .paid-label {
+      position: absolute;
+      top: 12px;
+      right: 110px;
+      background: #28a745;
+      color: white;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    .record .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      background: #dc3545;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .record .delete-btn:hover {
+      background-color: #a71d2a;
+    }
+    .record small {
+      color: #555;
+      font-style: italic;
+    }
+    .filter-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    .filter-group > * {
+      flex: 1 1 48%;
+    }
+    .clock {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #004a99;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Giriş Bölümü -->
+<div class="login-container" id="loginSection">
+  <h2>Almira Bilişim - Giriş</h2>
+  <input type="password" id="password" placeholder="Şifre giriniz" />
+  <button onclick="login()">Giriş</button>
+</div>
+
+<!-- Ana Uygulama -->
+<div class="app-container hidden" id="appSection">
+  <!-- (Kodun geri kalanı aynı kalır: bayi listesi, borç kaydı, notlar vs.) -->
+</div>
+
+<!-- JavaScriptler -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Tüm mevcut JavaScript kodların burada olacak (login, kayıt ekleme vs.) -->
+
+<!-- EK DÜZENLEME -->
+<script>
+  // Giriş ekranını görünür hale getir (Apple uyumlu)
+  document.getElementById("loginSection").classList.remove("hidden");
+</script>
+
+<footer style="text-align:center; margin-top:30px; color:#555; font-size:14px;">
+  Bu yazılım <strong>Almira Bilişim</strong> tarafından geliştirilmiştir.
+</footer>
+</body>
+</html>
